@@ -9,7 +9,7 @@ img {
 }
 
 html {
-  --primary_link: rgba(200, 200, 200, 1);
+  --primary_link: rgba(200, 200, 23 0, 1);
   --primary_hover: rgba(0, 151, 180, 1);
   --secondary_g: rgba(4, 112, 134, 1);
   --background: rgb(252, 252, 252);
@@ -31,6 +31,8 @@ div.content {
 div.menu {
   text-align: center;
 }
+
+/* ---------- PRODUCT LIST --------- */
 
 div.product-title {
   padding: 20px;
@@ -163,8 +165,21 @@ div.product-list-item img {
 
 /* ---- CATEGORY LIST ------- 
 */
-/* div.category-list {
+div.category-item {
+  background-color: #262;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
+/*
 div.category-list-item img {
 } */
+
+/* ---- PRODUCT DATA ---- */
+ol.breadcrumb {
+  display: flex;
+  list-style: none;
+  margin: 20px;
+  padding: 0;
+  gap: 5px;
+}

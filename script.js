@@ -1,4 +1,6 @@
 console.log("Script is running.");
+
+// ----------------- CATEGORY LIST -------------------
 const categoryListElem = document.querySelector("div.category-list");
 if (categoryListElem != undefined) {
   function fetchCategories() {
@@ -7,8 +9,6 @@ if (categoryListElem != undefined) {
       .then((categories) => categories.forEach(createCategory));
   }
   console.log("Category list detected.");
-  // here I hard code the number of categories
-  //   const categories = [{ category: "Accessories" }, { category: "Apparel" }, { category: "Footwear" }, { category: "Free Items" }, { category: "Personal Care" }, { category: "Sporting Goods" }];
 
   function createCategory(category) {
     // find category template in DOM
@@ -29,6 +29,7 @@ if (categoryListElem != undefined) {
   fetchCategories();
 }
 
+// ----------------- PRODUCT LIST -------------------
 const productListElem = document.querySelector("div.product-list");
 if (productListElem != undefined) {
   function fetchProducts() {
@@ -57,7 +58,11 @@ if (productListElem != undefined) {
     // sold out?
     const prodImgElem = clone.querySelector(".product-list-image");
     prodImgElem.src = "https://kea-alt-del.dk/t7/images/webp/640/" + product.id + ".webp";
-    if (product.soldout == 1) prodImgElem.classList.add("product-sold-out");
+    if (product.soldout == 1) {
+      prodImgElem.classList.add("product-sold-out"); // make product tranparent if sold out
+    } else {
+      clone.querySelector(".text-sold-out").classList.add("hide");
+    }
     // discount on the product
     const productPriceBand = clone.querySelector(".product-price-band");
     if (product.discount != null) {
@@ -72,16 +77,35 @@ if (productListElem != undefined) {
   fetchProducts();
 }
 
+// ----------------- PRODUCT DETAILS -------------------
 // this is the URL to fetch a single product
 // https://kea-alt-del.dk/t7/api/products/1163
+const productDataElem = document.querySelector("div.product-data");
+if (productDataElem != undefined) {
+  const productIdParam = new URLSearchParams(window.location.search).get("productid");
 
-const itemParam = new URLSearchParams(window.location.search).get("category");
-let itemFilter = "";
-if (itemParam != null) itemFilter = "&category=" + itemParam;
-// this is the end of the category filter code
+  fetch("https://kea-alt-del.dk/t7/api/products/" + productIdParam)
+    .then((response) => response.json())
+    .then((data) => showProduct(data));
 
-fetch("https://kea-alt-del.dk/t7/api/products/1163" + itemFilter)
-  .then((resp) => resp.json()) // extract json - we con't care about the rest of the response.
-  .then((product) => product.forEach(createProduct));
+  function showProduct(product) {
+    console.log(product);
+    document.querySelector(".purchaseBox h3").textContent = product.productdisplayname;
+  }
 
-console.log("Hver product detected");
+  if (productIdParam != undefined) {
+    const productImg = productDataElem.querySelector("img");
+    productImg.src = "https://kea-alt-del.dk/t7/images/webp/640/" + productIdParam + ".webp";
+  }
+}
+
+// const itemParam = new URLSearchParams(window.location.search).get("category");
+// let itemFilter = "";
+// if (itemParam != null) itemFilter = "&category=" + itemParam;
+// // this is the end of the category filter code
+
+// fetch("https://kea-alt-del.dk/t7/api/products/1163" + itemFilter)
+//   .then((resp) => resp.json()) // extract json - we con't care about the rest of the response.
+//   .then((product) => product.forEach(createProduct));
+
+// console.log("Hver product detected");
