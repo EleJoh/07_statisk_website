@@ -14,27 +14,31 @@
     <header>
         <h1>Fashion<span>R</span>Us </h1>
 
-        <div class="menu content">
+        <!-- <div class="menu content">
             <nav>| <a href="category.html"> Categories</a>
                 | <a href="#">Brands</a>
                 | <a href="#">Seasons</a>
             </nav>
-        </div>
+        </div> -->
     </header>
     <main>
+        <div class="menu content">
+            | <a href="index.html">Forside</a> | <a href="category.html"> Kategorier</a> | <a href="product_list.html">
+                Produktliste</a> |
+        </div>
         <div class="content">
             <ol class="breadcrumb">
                 <li><a href="index.html">Home</a>&#32;&#62;</li>
                 <li><a href="category.html">Categories</a>&#32;&#62;</li>
-                <li><a href="product_list.html">Apparel</a>&#32;&#62;</li>
-                <li>Sahara Team India Fanwear Round Neck Jersey</li>
+                <li class="breadcrumb-cat"><a href="">prodCategory</a>&#32;&#62;</li>
+                <li class="breadcrumb-item">Sahara Team India Fanwear Round Neck Jersey</li>
             </ol>
         </div>
 
         <div class="main content">
             <div class="product-title">
-                Sahara Team India Fanwear Round Neck Jersey
-                <span>Price: $895</span>
+                <!-- Sahara Team India Fanwear Round Neck Jersey
+                <span>Price: $895</span> -->
             </div>
             <div class="product-data">
                 <div>
@@ -46,30 +50,31 @@
                         <p>Nike | Tshirts </p>
                         <form>
                             <label>
-                                Choose a size<select name="size">
+                                Choose a size<span></span> <select name="size" class="size-decoration">
                                     <option>S</option>
                                     <option>M</option>
                                     <option>L</option>
                                     <option>XL</option>
                                 </select>
                             </label>
-                            <button>Add to basket</button>
+                            <button class="add-to-basket">Add to basket</button>
                         </form>
                     </section>
-                    <section class="product-description">
-                        <h2>Product information</h2>
-                        <dl>
-                            <dt>Model name</dt>
-                            <dd>Sahara Team India Fanwear Round Neck Jersey</dd>
-                            <dt>Color</dt>
-                            <dd>Blue</dd>
-                            <dt>Inventory number</dt>
-                            <dd>1163</dd>
-                        </dl>
-                        <h1>Nike</h1>
-                        <p>Nike, creating experiences for today's athlete</p>
-                    </section>
                 </div>
+                <section class="product-description product-information">
+                    <h2>Product information</h2>
+                    <dl>
+                        <dt>Model name</dt>
+                        <dd class="name-item">Sahara Team India Fanwear Round Neck Jersey</dd>
+                        <dt>Color</dt>
+                        <dd class="color-item">Blue</dd>
+                        <dt>Inventory number</dt>
+                        <dd class="relid-number">1163</dd>
+                    </dl>
+                    <h3 class="brandname-item">Nike</h3>
+                    <p class="brandbio-item">Nike, creating experiences for today's athlete</p>
+                </section>
+
             </div>
             <!-- <div class="product-description">
             </div> -->
